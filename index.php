@@ -10,7 +10,8 @@
 	$hostname = "us-cdbr-iron-east-01.cleardb.net";
 	$username = "b74ba3320e82ec";
 	$password = "2d194843";
-	$con = new msqli($hostname,$username,$password);
+	$dbname = "ad_bb6ddb2f34daf52";
+	$con = new msqli($hostname,$username,$password,$dbname);
 	
 	if($con->connect_error)
 	{
@@ -25,12 +26,13 @@
       	<td><?php echo $row['codigo_servicio']?></td>
       	<td><?php echo $row['nombre_servicio']?></td>
       	<td><?php echo $row['descripcion_servicio']?></td>
+	<td><?php echo $row['imagen_servicio']?></td>
      	 </tr>
      	<?php }
   	} else {
      	 echo "0 results";
   	}
  	 $conn->close();
-	
+	?>
 </body>
 </html>
