@@ -6,16 +6,31 @@
 	<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-	<table>
-		<tr>
-			<td style='width: 30%;'>
-				<img class = 'newappIcon' src='images/newapp-icon.png'>
-			</td>
-			<td>
-				<h1 id = "message"><?php echo "Hola Mundo!"; ?></h1>
-				<p class='description'></p> Thanks for creating a <span class="blue">PHP Starter Application</span>.
-			</td>
-		</tr>
-	</table>
+	<?php
+	$hostname = "us-cdbr-iron-east-01.cleardb.net";
+	$username = "b74ba3320e82ec";
+	$password = "2d194843";
+	$con = new msqli($hostname,$username,$password);
+	
+	if($con->connect_error)
+	{
+		die("Conection failed : " .$con->connect_error);
+	}
+		$sql = "SELECT * from servicios";
+	$result = $con->query($sql); 
+	num_rows > 0) {
+      // output data of each row
+      	while($row = $result->fetch_assoc()) {?>
+      	<tr>
+      	<td><?php echo $row['codigo_servicio']?></td>
+      	<td><?php echo $row['nombre_servicio']?></td>
+      	<td><?php echo $row['descripcion_servicio']?></td>
+     	 </tr>
+     	<?php }
+  	} else {
+     	 echo "0 results";
+  	}
+ 	 $conn->close();
+	
 </body>
 </html>
